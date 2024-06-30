@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="https://db.onlinewebfonts.com/c/19139fca5b50ebd5612a15a93124723f?family=TriviaSansMedium" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            const correctPt1 = "220";
+            const correctPt2 = "0";
+            window.onload = function() {
+                //Toggle Game start
+                document.getElementById("game-collapse").addEventListener("click", function() {
+                    this.nextElementSibling.classList.toggle("hidden");
+                });
+
+                //Part 1: numPad Interaction
+                var numberGroup = document.getElementsByClassName("letter");
+                for (number of numberGroup) {
+                    number.children[0].addEventListener("click", function() {
+                        var code = document.getElementById("code");
+                        code.removeAttribute("readonly");
+                        code.value += this.innerHTML;
+                        if (code.value.length === 3) {
+                            if (code.value === correctPt1) {
+                                document.getElementById("part-2").classList.toggle("hidden");
+                                alert("Congratulations!");
+                                code.disabled = true;
+                            } else {
+                                alert("Try again");
+                                code.value = "";
+                            }
+                        }
+                        code.readOnly = true;
+                    });
+                }
+
+                //Part 2: Numeric answer field
+                document.getElementById("pt-2-answer").addEventListener("input", function() {
+                    if (this.value === correctPt2) {
+                        alert("Congrats! Take a cake 🎂");
+                        document.getElementById("end").classList.toggle("hidden");
+                        window.setTimeout(window.close, 4000);
+                    } else {
+                        alert("Try again!");
+                        this.value = "";
+                    }
+                });
+            }
+        </script>
+        <title>So... 21 + 21?</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand" id="top-nav">
+                <a class="navbar-brand" href="index.html" id="name">Jesus Machado</a>
+                <div class="navbar-nav" id="left-nav-group">
+                    <ul class="row-table">
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.html">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact" target=”_blank” href="mailto:machadoquintana555@gmail.com">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="container text-center text-light">
+            <h1>Why math is fun?</h1>
+            <h3 class="text-muted pt-1 pb-3">Sometimes...</h3>
+            <img src="https://jsslf.s-ul.eu/QP3xpe55" alt="Mathematics chalkboard">
+            <p class="text-white line-top pt-4">I've loved maths since a I was a child. Not only because I was good at it, but because I enjoy experiencing the thrill of being able to come up with solutions to problems, by following the relation between these symbols called "numbers" and applying these other symbols known as "operators". From counting how many apples I have left if I am given 3 and I eat 1, to representing linear systems with matrix equations. All these years of practicing and learning new things have proven to be useful later on, for example, when working on my independent game development project. So this time, i want to introduce you to a little math experience that i've been working on for a few weeks... i'm sure most of you will enjoy it even if can only count to patata. This is: Ad math</p>
+            <button class="btn btn-primary btn-lg" id="game-collapse">Begin</button>
+            <section class="container-fluid hidden">
+                <h2 class="text-light text-start line-bottom">Part 1: I forgot my credit card CVV...</h2>
+                <p class="text-start">This is very simple: I need my credit card CVV and you need to continue the game. So we're going to help each other. Here's the image that always helps me remember the CVV:</p>
+                <img src="https://jsslf.s-ul.eu/6rkc9mGt" alt="algebraic puzzle">
+                <p class="text-start">But that's only one piece of the puzzle. The one with you will find the actual code is the following formula:</p>
+                <h2 class="bg-light text-black fs-1 text-center my-5">🍎 x 🍌 + 🍎 / 🥥 x 🍌 x 🍎 - 🍎 x 🥥</h2>
+                <p class="line-bottom text-start">And here's where you must enter the code. Remember, it is 3 digits long. Good luck!</p>
+                <div id="container">
+                    <ul id="keyboard">
+                        <li class="letter"><button>1</button></li>
+                        <li class="letter"><button>2</button></li>
+                        <li class="letter"><button>3</button></li>
+                        <li class="letter clearl"><button>4</button></li>
+                        <li class="letter"><button>5</button></li>
+                        <li class="letter"><button>6</button></li>
+                        <li class="letter clearl"><button>7</button></li>
+                        <li class="letter "><button>8</button></li>
+                        <li class="letter"><button>9</button></li>
+                        <li class="clearl"> </li>
+                        <li class="letter"><button>0</button></li>
+                        <li> </li>
+                    </ul>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <form>
+                            <input class="form-control" id="code" type="password" placeholder="Enter code using numpad" readonly>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section class="container-fluid text-start hidden" id="part-2">
+                <div class="line-bottom">
+                    <h2 class="text-light">Part 2: The old phone...</h2>
+                    <img class="inline-img small-img" src="https://jsslf.s-ul.eu/JkQ4sQry" alt="old pepe the frog">
+                </div>
+                <p>I have a very old land phone, and one of my grandchildren asked me this when he saw it: if you were to multiply all the numbers on the device’s number pad. What will be the answer?. I spent like 1 minute doing the math when the answer was simple. What do you think? can you solve it without a calculator? It's not really that hard when you think about a specific number that doesn't really care about the product of the others ones.</p>
+                <img src="https://jsslf.s-ul.eu/UmswMJRs" alt="old land phone">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <form id="pt-2-form">
+                            <input autocomplete="off" id="pt-2-answer" class="form-control" pattern="^[0-9]{1,3}$" placeholder="Put your numeric answer here" title="Max: 3 digits">
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section id="end" class="hidden">
+                <h2>That's it</h2>
+                <h2 class="big">Or... maybe not?</h2>
+            </section>
+        </main>
+    </body>
+</html>

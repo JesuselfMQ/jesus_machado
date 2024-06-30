@@ -1,0 +1,22 @@
+HTML Tags:
+1. <header>
+2. <main>
+3. <footer>
+4. <section>
+5. <nav>
+6. <ul>
+7. <li>
+8. <a>
+9. <img>
+10. <p>
+
+CSS Properties:
+1. display
+2. background-color
+3. padding
+4. margin
+5. border
+
+JavaScript: Mainly used to generate dynamic html code and interactive puzzles.
+
+Bootstrap: Used for responsive grid design and to style navigation bar.
